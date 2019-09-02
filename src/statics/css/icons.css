@@ -1,0 +1,38 @@
+.sentiment-icon {
+    display: inline-block;
+    background-image: url("../img/faces.jpg");
+    background-repeat: no-repeat;
+    background-size: 150px 100px;
+    width: 40px;
+    height: 30px;
+}
+
+.sentiment-icon.lg {
+    background-size: 350px 250px !important;
+    width: 62px !important;
+    height: 65px !important;
+}
+
+.sentiment-icon.happy {
+    background-position: -9px;
+}
+
+.sentiment-icon.neutral {
+    background-position: -56px;
+}
+
+.sentiment-icon.sad {
+    background-position: -102px;
+}
+
+.sentiment-icon.lg.happy {
+    background-position: -36px;
+}
+
+.sentiment-icon.lg.neutral {
+    background-position: -144px;
+}
+
+.sentiment-icon.lg.sad {
+    background-position: -252px;
+}

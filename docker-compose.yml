@@ -1,0 +1,9 @@
+version: "3"
+services:
+  sentiment:
+    image: sentiment:latest
+    command: run
+    env_file:
+      - twitter.env
+    ports:
+      - 8000:8000

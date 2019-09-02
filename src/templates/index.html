@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--Form-->
+<div class="row mb-3">
+    <div class="col-md-12">
+        <form action="/" method="get" class="navbar-form navbar-left padding-top-xs">
+            <div class="input-group">
+                <input type="text" class="form-control" name="screen_name" placeholder="username" value="{{screen_name}}"/>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Analyze</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--Errors-->
+{% if errors %}
+    {% for error in errors -%}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+              {{error.message}}
+            </div>
+        </div>
+    </div>
+    {%- endfor %}
+{% endif %}
+
+<!--Table-->
+{% if screen_name and sentiment %}
+<div class="row">
+    <div class="col-md-4">
+        <img src="https://avatars.io/twitter/{{screen_name}}" class="img-thumbnail" alt="{{screen_name}}"/>
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Overall</td>
+              <td>
+                {% if sentiment.total < 2 %}
+                    <div class="sentiment-icon sad lg"></div>
+                {% elif sentiment.total >= 3 %}
+                    <div class="sentiment-icon happy lg"></div>
+                {% else %}
+                  <div class="sentiment-icon neutral lg"></div>
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td>Latest</td>
+              <td>
+                {% for item in sentiment['items'] %}
+                  <div class="d-inline-block" tabindex="0" data-toggle="tooltip" title="{{item.tweet}}">
+                      {% if item.class < 2 %}
+                        <div class="sentiment-icon sad"></div>
+                      {% elif item.class >= 3 %}
+                        <div class="sentiment-icon happy"></div>
+                      {% else %}
+                        <div class="sentiment-icon neutral"></div>
+                      {% endif %}
+                  </div>
+                {% endfor %}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="freid001">
+    <title>Tweet Sentiment</title>
+    <link rel="stylesheet" href="{{ url_for('statics', path='/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('statics', path='/css/icons.css') }}">
+    <script src="{{ url_for('statics', path='/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('statics', path='/js/popper.min.js') }}"></script>
+    <script src="{{ url_for('statics', path='/js/bootstrap.min.js') }}"></script>
+    <script>
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <a class="navbar-brand" href="/">
+        <img src="{{ url_for('statics', path='/img/twitter.png') }}" width="30" height="30" class="rounded d-inline-block align-top">
+        Tweet Sentiment
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav"></ul>
+      </div>
+    </nav>
+    <br />
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
